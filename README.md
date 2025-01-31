@@ -1,11 +1,11 @@
 # CryptoBridge
 Pequena API de consulta de preços de cryptomoedas em diversas linguagens.
 
-##Sobre:
+## Sobre:
 
     CriptoBridge é um pequeno projeto para consultar dados de Criptomoedas de diversas exchanges e padronizar respostas para o usuário.
 
-##Objetivo:
+## Objetivo:
 
     Em um certo dia, estava pensando em alguma aplicação que poderia desenvolver para
 praticar algumas linguagens que uso com frequência ou até mesmo aprender um pouco
@@ -17,7 +17,7 @@ vários lugares  e retornar a informação para o usuário?"
 E assim a ideia surgiu  Para mim., isso combina duas coisas que adoro, codificação e
 Criptomoedas.
 
-##Recursos:
+## Recursos:
 - Arquitetura simples para consulta. Basta indicar o nome da exchange desejada e o par desejado;
 - Sistema básico de cache de informações para evitar 429 nas APIS de consulta;
 - Retorno padronizado para o usuário. Cada exchange retorna informações de um
