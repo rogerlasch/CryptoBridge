@@ -1,0 +1,5 @@
+# Teste POST /tickers - Múltiplos tickers da Coinbase
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d @jsons/tickers_coinbase_multiple.json \
+  http://localhost:3000/tickers

@@ -1,0 +1,5 @@
+# Teste POST /tickers - Exchange inválida (teste de erro)
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d @jsons/tickers_invalid.json \
+  http://localhost:3000/tickers

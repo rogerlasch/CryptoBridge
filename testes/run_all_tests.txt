@@ -1,0 +1,34 @@
+# Script para executar todos os testes da API
+# Execute este arquivo linha por linha ou copie os comandos
+
+echo "=== TESTANDO EXCHANGES ==="
+bash test_exchanges.txt
+
+echo -e "\n=== TESTANDO SYMBOLS ==="
+bash test_symbols_coinbase.txt
+echo -e "\n---"
+bash test_symbols_mercadobitcoin.txt
+echo -e "\n---"
+bash test_symbols_invalid.txt
+
+echo -e "\n=== TESTANDO TICKERS ==="
+bash test_tickers_coinbase_btc.txt
+echo -e "\n---"
+bash test_tickers_coinbase_multiple.txt
+echo -e "\n---"
+bash test_tickers_mercadobitcoin.txt
+echo -e "\n---"
+bash test_tickers_invalid.txt
+
+echo -e "\n=== TESTANDO MÉTRICAS ==="
+bash test_metrics_summary.txt
+echo -e "\n---"
+bash test_metrics_exchanges_top.txt
+echo -e "\n---"
+bash test_metrics_exchanges_top_limit.txt
+echo -e "\n---"
+bash test_metrics_tickers_top.txt
+echo -e "\n---"
+bash test_metrics_tickers_top_limit.txt
+echo -e "\n---"
+bash test_metrics_performance.txt

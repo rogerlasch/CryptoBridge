@@ -1,0 +1,5 @@
+# Teste POST /tickers - Preços do Mercado Bitcoin
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d @jsons/tickers_mercadobitcoin.json \
+  http://localhost:3000/tickers

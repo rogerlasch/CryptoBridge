@@ -1,0 +1,5 @@
+# Teste POST /symbols - Símbolos da Coinbase
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d @jsons/symbols_coinbase.json \
+  http://localhost:3000/symbols

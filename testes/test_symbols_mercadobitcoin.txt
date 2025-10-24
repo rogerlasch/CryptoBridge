@@ -1,0 +1,5 @@
+# Teste POST /symbols - Símbolos do Mercado Bitcoin
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d @jsons/symbols_mercadobitcoin.json \
+  http://localhost:3000/symbols

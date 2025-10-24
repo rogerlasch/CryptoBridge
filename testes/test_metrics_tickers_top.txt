@@ -1,0 +1,2 @@
+# Teste GET /metrics/tickers/top - Top tickers por requisições
+curl -X GET http://localhost:3000/metrics/tickers/top

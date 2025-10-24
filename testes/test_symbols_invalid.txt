@@ -1,0 +1,5 @@
+# Teste POST /symbols - Exchange inválida (teste de erro)
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d @jsons/symbols_invalid.json \
+  http://localhost:3000/symbols

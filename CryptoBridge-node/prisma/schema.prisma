@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ExchangeMetrics {
+  id              Int      @id @default(autoincrement())
+  exchangeName    String   @map("exchange_name")
+  requestCount    Int      @default(1) @map("request_count")
+  lastAccessed    DateTime @default(now()) @map("last_accessed")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@unique([exchangeName])
+  @@map("exchange_metrics")
+}
+
+model TickerMetrics {
+  id              Int      @id @default(autoincrement())
+  exchangeName    String   @map("exchange_name")
+  tickerSymbol    String   @map("ticker_symbol")
+  requestCount    Int      @default(1) @map("request_count")
+  lastAccessed    DateTime @default(now()) @map("last_accessed")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@unique([exchangeName, tickerSymbol])
+  @@map("ticker_metrics")
+}
+
+model ApiMetrics {
+  id              Int      @id @default(autoincrement())
+  endpoint        String
+  method          String
+  statusCode      Int      @map("status_code")
+  responseTimeMs  Float    @map("response_time_ms")
+  timestamp       DateTime @default(now())
+
+  @@map("api_metrics")
+}
