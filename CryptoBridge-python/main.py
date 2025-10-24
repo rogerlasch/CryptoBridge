@@ -17,6 +17,7 @@ async def lifespan(app: FastAPI):
         await conn.run_sync(Base.metadata.create_all)
 
     print("CryptoBridge Python API iniciada na porta 3000")
+    print("Banco de dados SQLite inicializado automaticamente")
     print("Endpoints disponíveis:")
     print("  GET  / - Lista exchanges disponíveis")
     print("  POST /symbols - Lista símbolos (body: {exchange})")

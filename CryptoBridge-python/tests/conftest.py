@@ -1,14 +1,12 @@
 import pytest
 import asyncio
-import sys
 import os
 from httpx import AsyncClient
 
-# Add the parent directory to Python path to import main
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from main import app
-from src.infrastructure.database.connection import engine, Base
-from src.infrastructure.database import models  # Import models to register them
+
+class TestConfig:
+    SERVER_URL = os.getenv("TEST_SERVER_URL", "http://localhost:3000")
+    TIMEOUT = 30.0
 
 
 @pytest.fixture(scope="session")
@@ -18,16 +16,17 @@ def event_loop():
     loop.close()
 
 
-@pytest.fixture(scope="session")
-async def setup_database():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-    yield
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.drop_all)
+@pytest.fixture
+async def client():
+    async with AsyncClient(base_url=TestConfig.SERVER_URL, timeout=TestConfig.TIMEOUT) as ac:
+        yield ac
 
 
 @pytest.fixture
-async def client(setup_database):
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        yield ac
+async def server_health_check():
+    async with AsyncClient(base_url=TestConfig.SERVER_URL, timeout=5.0) as client:
+        try:
+            response = await client.get("/")
+            assert response.status_code == 200
+        except Exception as e:
+            pytest.fail(f"Server not running at {TestConfig.SERVER_URL}: {e}")
